@@ -2552,8 +2552,8 @@ function renderCars(cat, data) {
         <div class="cp">${car.p} <span>*Ex-showroom</span></div>
         <div class="cs"><span>⛽ ${car.f}</span><span>📊 ${car.s}</span></div>
         <div class="ca">
-          <button class="cbt cbt-p" onclick="event.stopPropagation();openDetail(${JSON.stringify(JSON.stringify(car)).slice(1,-1)})">View Details</button>
-          <button class="cbt cbt-o" onclick="event.stopPropagation();addCarToCompare('${car.n}');openModal('cmp-modal')">Compare</button>
+          <button class="cbt cbt-p" onclick="trackCarView('Hyundai Creta')";onclick="event.stopPropagation();openDetail(${JSON.stringify(JSON.stringify(car)).slice(1,-1)})">View Details</button>
+          <button class="cbt cbt-o" onclick="trackCompare()";onclick="event.stopPropagation();addCarToCompare('${car.n}');openModal('cmp-modal')">Compare</button>
         </div>
       </div>
     </div>`}).join('');
@@ -3660,6 +3660,21 @@ addCardTilt('.brc', 10);
 addCardTilt('.ucta', 6);
 addCardTilt('.tcard', 5);
 addCardTilt('.ql', 7);
+
+
+function trackCompare(){
+gtag('event','compare_cars');
+}
+
+
+function trackCarView(car){
+gtag('event','view_car_detail',{
+car_name:car
+});
+}
+
+
+  
 </script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6WKXBQS2HF"></script>
